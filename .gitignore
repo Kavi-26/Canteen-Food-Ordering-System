@@ -1,0 +1,45 @@
+# Gradle files
+.gradle/
+build/
+app/build/
+backend/build/
+
+# Maven/Gradle Wrapper
+!gradle/wrapper/gradle-wrapper.jar
+!mvnw
+!mvnw.cmd
+
+# Android/IntelliJ
+.idea/
+.navigation/
+*.iml
+*.ipr
+*.iws
+out/
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+
+# Android specific
+*.apk
+*.ap_
+*.dex
+*.class
+
+# Node modules
+node_modules/
+dist/
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+backend_log.txt
