@@ -40,7 +40,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         // Use placeholder if image url is empty or fails
         Glide.with(holder.itemView.getContext())
              .load(food.imageUrl)
-             .placeholder(R.drawable.ic_launcher)
+             .placeholder(R.drawable.ic_lunch)
              .into(holder.image);
 
         holder.btnAdd.setOnClickListener(v -> {
@@ -64,8 +64,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
             name = itemView.findViewById(R.id.tvFoodName);
             desc = itemView.findViewById(R.id.tvFoodDesc);
             price = itemView.findViewById(R.id.tvFoodPrice);
-            image = itemView.findViewById(R.id.ivFoodImage);
-            btnAdd = itemView.findViewById(R.id.btnAdd);
+             image = itemView.findViewById(R.id.imgFood);
+             btnAdd = itemView.findViewById(R.id.btnAdd);
         }
     }
 }
