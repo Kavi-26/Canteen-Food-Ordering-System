@@ -30,8 +30,8 @@ public interface ApiService {
     @POST("/api/orders/verify-otp")
     Call<ApiResponse> verifyOtp(@Body OtpVerificationRequest request);
 
-    @GET("/api/food/category")
-    Call<ApiResponse> getFoodByCategory(@retrofit2.http.Query("category") String category);
+    @GET("/api/food/category/{category}")
+    Call<ApiResponse> getFoodByCategory(@retrofit2.http.Path("category") String category);
 
     @GET("/api/food/search")
     Call<ApiResponse> searchFood(@retrofit2.http.Query("query") String query);

@@ -1,0 +1,93 @@
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+
+> Task :app:compileDebugJavaWithJavac FAILED
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:18: error: class, interface, or enum expected
+        List<OrderItemDto> items = new ArrayList<>();
+        ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:19: error: class, interface, or enum expected
+        for (Map.Entry<FoodItem, Integer> entry : CartManager.getInstance().getCartItems().entrySet()) {
+        ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:21: error: class, interface, or enum expected
+        }
+        ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:26: error: class, interface, or enum expected
+        RetrofitClient.getInstance().getApi().placeOrder(request).enqueue(new Callback<ApiResponse>() {
+        ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:28: error: class, interface, or enum expected
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                   ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:33: error: class, interface, or enum expected
+                    long orderId = 0; 
+                    ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:34: error: class, interface, or enum expected
+                    if (response.body().getData() != null) {
+                    ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:37: error: class, interface, or enum expected
+                         } catch (Exception e) { e.printStackTrace(); }
+                         ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:37: error: class, interface, or enum expected
+                         } catch (Exception e) { e.printStackTrace(); }
+                                                                      ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:42: error: class, interface, or enum expected
+                    Intent intent = new Intent(CartActivity.this, OtpVerificationActivity.class);
+                    ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:42: error: <identifier> expected
+                    Intent intent = new Intent(CartActivity.this, OtpVerificationActivity.class);
+                                                                                               ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:44: error: class, interface, or enum expected
+                    startActivity(intent);
+                    ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:45: error: class, interface, or enum expected
+                    finish();
+                    ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:46: error: class, interface, or enum expected
+                } else {
+                ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:48: error: class, interface, or enum expected
+                }
+                ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:52: error: class, interface, or enum expected
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                   ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:54: error: class, interface, or enum expected
+            }
+            ^
+C:\PCfiles\dev\gugan\CollegeCanteen\app\src\main\java\com\collegecanteen\ui\CartActivity.java:56: error: class, interface, or enum expected
+    }
+    ^
+18 errors
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugJavaWithJavac'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+> Run with --info option to get more log output.
+> Run with --scan to get full insights.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.10/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 1s
+14 actionable tasks: 1 executed, 13 up-to-date
