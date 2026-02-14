@@ -41,6 +41,16 @@ public class SessionManager {
     public String getUserName() {
         return pref.getString(KEY_NAME, "User");
     }
+    
+    public int getUserId() {
+        // Default to 1 for testing if not set, or handle property
+        return pref.getInt("user_id", 1); 
+    }
+    
+    public void saveUserId(int id) {
+        editor.putInt("user_id", id);
+        editor.commit();
+    }
 
     public void logout() {
         editor.clear();

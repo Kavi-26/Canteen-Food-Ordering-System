@@ -15,7 +15,7 @@
             android:id="@+id/logoImage"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/ic_launcher_foreground"
+            android:src="@drawable/ic_launcher"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -76,7 +76,7 @@
                         android:id="@+id/etRollNo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textCaps" />
+                        android:inputType="textCapCharacters" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
