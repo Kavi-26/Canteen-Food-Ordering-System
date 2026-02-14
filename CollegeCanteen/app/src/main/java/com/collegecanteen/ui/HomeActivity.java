@@ -35,6 +35,8 @@ public class HomeActivity extends AppCompatActivity {
         
         findViewById(R.id.btnViewCart).setOnClickListener(v -> startActivity(new Intent(this, CartActivity.class)));
         
+        findViewById(R.id.btnOrderHistory).setOnClickListener(v -> startActivity(new Intent(this, OrderHistoryActivity.class)));
+        
         findViewById(R.id.btnLogout).setOnClickListener(v -> {
             sessionManager.logout();
             startActivity(new Intent(this, LoginActivity.class));

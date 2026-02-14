@@ -39,4 +39,7 @@ public interface ApiService {
     @retrofit2.http.FormUrlEncoded
     @POST("/api/orders/update-status")
     Call<ApiResponse> updateOrderStatus(@retrofit2.http.Field("orderId") Long orderId, @retrofit2.http.Field("status") String status);
+
+    @GET("/api/orders/history/{userId}")
+    Call<ApiResponse> getUserOrders(@retrofit2.http.Path("userId") Long userId);
 }
