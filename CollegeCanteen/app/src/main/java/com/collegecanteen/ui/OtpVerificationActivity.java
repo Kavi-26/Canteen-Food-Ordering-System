@@ -48,9 +48,9 @@ public class OtpVerificationActivity extends AppCompatActivity {
         }
 
         SessionManager session = new SessionManager(this);
-        OtpVerificationRequest request = new OtpVerificationRequest(session.getUserId(), otp);
+        OtpVerificationRequest request = new OtpVerificationRequest((long) session.getUserId(), otp);
 
-        RetrofitClient.getApiService().verifyOtp(request).enqueue(new Callback<ApiResponse>() {
+        RetrofitClient.getInstance().getApi().verifyOtp(request).enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful() && response.body() != null && response.body().success) {

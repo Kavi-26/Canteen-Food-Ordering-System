@@ -46,7 +46,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void fetchFoodItems(String category) {
-        RetrofitClient.getApiService().getFoodByCategory(category).enqueue(new Callback<ApiResponse>() {
+        RetrofitClient.getInstance().getApi().getFoodByCategory(category).enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 if (response.isSuccessful() && response.body() != null && response.body().success) {

@@ -47,7 +47,7 @@ public class StaffOrderAdapter extends RecyclerView.Adapter<StaffOrderAdapter.Or
 
     private void setupStatusButton(Button button, Order order, String status) {
         button.setOnClickListener(v -> {
-            RetrofitClient.getApiService().updateOrderStatus(order.orderId, status).enqueue(new Callback<ApiResponse>() {
+            RetrofitClient.getInstance().getApi().updateOrderStatus(order.orderId, status).enqueue(new Callback<ApiResponse>() {
                 @Override
                 public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                     if (response.isSuccessful()) {

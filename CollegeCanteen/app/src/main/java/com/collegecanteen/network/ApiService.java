@@ -29,4 +29,11 @@ public interface ApiService {
 
     @POST("/api/orders/verify-otp")
     Call<ApiResponse> verifyOtp(@Body OtpVerificationRequest request);
+
+    @GET("/api/food/category")
+    Call<ApiResponse> getFoodByCategory(@retrofit2.http.Query("category") String category);
+
+    @retrofit2.http.FormUrlEncoded
+    @POST("/api/orders/update-status")
+    Call<ApiResponse> updateOrderStatus(@retrofit2.http.Field("orderId") int orderId, @retrofit2.http.Field("status") String status);
 }
