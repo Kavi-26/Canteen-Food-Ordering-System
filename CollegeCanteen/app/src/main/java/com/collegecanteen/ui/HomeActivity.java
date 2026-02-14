@@ -25,16 +25,15 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         TextView tvWelcome = findViewById(R.id.tvWelcome);
-        // Assuming session manager saves name, or just welcome user
-        tvWelcome.setText("Welcome, Student!"); 
+        String name = sessionManager.getUserName();
+        tvWelcome.setText("Good Morning, " + name + "!"); 
 
-        findViewById(R.id.btnBreakfast).setOnClickListener(v -> openMenu("Breakfast"));
-        findViewById(R.id.btnLunch).setOnClickListener(v -> openMenu("Lunch"));
-        findViewById(R.id.btnSnacks).setOnClickListener(v -> openMenu("Snacks"));
-        findViewById(R.id.btnDrinks).setOnClickListener(v -> openMenu("Drinks"));
+        findViewById(R.id.cardBreakfast).setOnClickListener(v -> openMenu("Breakfast"));
+        findViewById(R.id.cardLunch).setOnClickListener(v -> openMenu("Lunch"));
+        findViewById(R.id.cardSnacks).setOnClickListener(v -> openMenu("Snacks"));
+        findViewById(R.id.cardDrinks).setOnClickListener(v -> openMenu("Drinks"));
         
         findViewById(R.id.btnViewCart).setOnClickListener(v -> startActivity(new Intent(this, CartActivity.class)));
-        // findViewById(R.id.btnOrderHistory).setOnClickListener(v -> startActivity(new Intent(this, OrderHistoryActivity.class))); // TODO
         
         findViewById(R.id.btnLogout).setOnClickListener(v -> {
             sessionManager.logout();
