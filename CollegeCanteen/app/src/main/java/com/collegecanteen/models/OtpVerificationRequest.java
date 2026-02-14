@@ -1,5 +1,6 @@
 package com.collegecanteen.models;
 
+public class OtpVerificationRequest {
     public Long userId;
     public String otp;
 
