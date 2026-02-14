@@ -40,6 +40,24 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         });
+
+        androidx.appcompat.widget.SearchView searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (query != null && !query.trim().isEmpty()) {
+                    Intent intent = new Intent(HomeActivity.this, MenuActivity.class);
+                    intent.putExtra("SEARCH_QUERY", query.trim());
+                    startActivity(intent);
+                }
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
     private void openMenu(String category) {

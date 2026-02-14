@@ -32,9 +32,9 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         String category = getIntent().getStringExtra("CATEGORY");
+        String searchQuery = getIntent().getStringExtra("SEARCH_QUERY");
         
         tvCategoryTitle = findViewById(R.id.tvCategoryTitle);
-        tvCategoryTitle.setText(category + " Menu");
         
         rvFoodItems = findViewById(R.id.rvFoodItems);
         rvFoodItems.setLayoutManager(new LinearLayoutManager(this));
@@ -42,7 +42,40 @@ public class MenuActivity extends AppCompatActivity {
         btnGoToCart = findViewById(R.id.btnGoToCart);
         btnGoToCart.setOnClickListener(v -> startActivity(new Intent(this, CartActivity.class)));
 
-        fetchFoodItems(category);
+        if (searchQuery != null) {
+            tvCategoryTitle.setText("Results for \"" + searchQuery + "\"");
+            searchFoodItems(searchQuery);
+        } else if (category != null) {
+            tvCategoryTitle.setText(category + " Menu");
+            fetchFoodItems(category);
+        }
+    }
+
+    private void searchFoodItems(String query) {
+        RetrofitClient.getInstance().getApi().searchFood(query).enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                if (response.isSuccessful() && response.body() != null && response.body().success) {
+                    Gson gson = new Gson();
+                    Type listType = new TypeToken<List<FoodItem>>(){}.getType();
+                    List<FoodItem> foodList = gson.fromJson(response.body().data, listType);
+                    
+                    if (foodList.isEmpty()) {
+                        Toast.makeText(MenuActivity.this, "No items found", Toast.LENGTH_SHORT).show();
+                    }
+                    
+                    FoodAdapter adapter = new FoodAdapter(foodList);
+                    rvFoodItems.setAdapter(adapter);
+                } else {
+                    Toast.makeText(MenuActivity.this, "Failed to search", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                Toast.makeText(MenuActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void fetchFoodItems(String category) {

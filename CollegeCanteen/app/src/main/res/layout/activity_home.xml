@@ -76,6 +76,15 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_search_rounded"
+                app:iconifiedByDefault="false"
+                app:queryHint="Search for food..." />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

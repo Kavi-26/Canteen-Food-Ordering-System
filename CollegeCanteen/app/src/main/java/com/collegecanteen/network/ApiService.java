@@ -33,6 +33,9 @@ public interface ApiService {
     @GET("/api/food/category")
     Call<ApiResponse> getFoodByCategory(@retrofit2.http.Query("category") String category);
 
+    @GET("/api/food/search")
+    Call<ApiResponse> searchFood(@retrofit2.http.Query("query") String query);
+
     @retrofit2.http.FormUrlEncoded
     @POST("/api/orders/update-status")
     Call<ApiResponse> updateOrderStatus(@retrofit2.http.Field("orderId") Long orderId, @retrofit2.http.Field("status") String status);

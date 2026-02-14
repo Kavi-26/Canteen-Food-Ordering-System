@@ -25,4 +25,9 @@ public class FoodController {
     public ApiResponse getFoodByCategory(@PathVariable String category) {
         return new ApiResponse(true, "Category fetched", foodItemRepository.findByCategory(category));
     }
+
+    @GetMapping("/search")
+    public ApiResponse searchFood(@RequestParam String query) {
+        return new ApiResponse(true, "Search results", foodItemRepository.findByNameContainingIgnoreCase(query));
+    }
 }
