@@ -1,29 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background">
+    android:background="@color/white"
+    android:padding="16dp">
 
-    <!-- Gradient Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_gradient_toolbar"
-        android:orientation="vertical"
-        android:paddingTop="40dp"
-        android:paddingBottom="20dp"
-        android:paddingHorizontal="20dp">
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_launcher" 
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/black"
+            android:rotation="180"/> 
 
         <TextView
             android:id="@+id/tvCategoryTitle"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Menu"
-            android:textSize="26sp"
+            android:layout_weight="1"
+            android:text="MENU"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"
+            android:layout_marginStart="16dp"
+            android:textAllCaps="true"/>
+
+        <ImageButton
+            android:id="@+id/btnGoToCart"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@android:drawable/ic_menu_agenda"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:tint="@color/black"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -31,21 +50,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:clipToPadding="false"
-        android:paddingTop="12dp"
-        android:paddingBottom="8dp"/>
-
-    <!-- Gradient Go to Cart Button -->
-    <Button
-        android:id="@+id/btnGoToCart"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/bg_gradient_button"
-        android:text="Go to Cart"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textAllCaps="false"/>
+        android:paddingBottom="16dp"/>
 
 </LinearLayout>
