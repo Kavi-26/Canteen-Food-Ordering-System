@@ -42,6 +42,21 @@
             app:layout_constraintTop_toBottomOf="@id/tvTitle"/>
 
         <EditText
+            android:id="@+id/etRollNo"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_manga_edittext"
+            android:hint="Roll Number"
+            android:inputType="text"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/text_secondary"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/etName"/>
+
+        <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="56dp"
@@ -54,7 +69,7 @@
             android:textColor="@color/black"
             android:textColorHint="@color/text_secondary"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/etName"/>
+            app:layout_constraintTop_toBottomOf="@id/etRollNo"/>
 
         <EditText
             android:id="@+id/etPhone"

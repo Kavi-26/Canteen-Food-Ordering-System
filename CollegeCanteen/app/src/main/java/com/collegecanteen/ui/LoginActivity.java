@@ -12,9 +12,9 @@ import com.collegecanteen.models.ApiResponse;
 import com.collegecanteen.models.LoginRequest;
 import com.collegecanteen.models.User;
 import com.collegecanteen.network.RetrofitClient;
+import android.widget.Button;
+import android.widget.EditText;
 import com.collegecanteen.utils.SessionManager;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,8 +22,8 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private TextInputEditText emailInput, passwordInput;
-    private MaterialButton loginButton;
+    private EditText emailInput, passwordInput;
+    private Button loginButton;
     private TextView registerLink;
     private SessionManager sessionManager;
 
@@ -41,10 +41,10 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        emailInput = findViewById(R.id.emailInput);
-        passwordInput = findViewById(R.id.passwordInput);
-        loginButton = findViewById(R.id.loginButton);
-        registerLink = findViewById(R.id.registerLink);
+        emailInput = findViewById(R.id.etEmail);
+        passwordInput = findViewById(R.id.etPassword);
+        loginButton = findViewById(R.id.btnLogin);
+        registerLink = findViewById(R.id.tvRegister);
 
         loginButton.setOnClickListener(v -> loginUser());
 

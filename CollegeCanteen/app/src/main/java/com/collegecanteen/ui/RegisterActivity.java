@@ -11,15 +11,16 @@ import com.collegecanteen.R;
 import com.collegecanteen.models.ApiResponse;
 import com.collegecanteen.models.RegisterRequest;
 import com.collegecanteen.network.RetrofitClient;
-import com.google.android.material.textfield.TextInputEditText;
-
+import android.widget.Button;
+import android.widget.EditText;
+import com.collegecanteen.R;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private TextInputEditText etName, etRollNo, etEmail, etMobile, etPassword;
+    private EditText etName, etRollNo, etEmail, etMobile, etPassword;
     private Button btnRegister;
     private TextView tvLoginLink;
 
@@ -29,12 +30,14 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         etName = findViewById(R.id.etName);
-        etRollNo = findViewById(R.id.etRollNo);
-        etEmail = findViewById(R.id.etEmailReg);
-        etMobile = findViewById(R.id.etMobile);
-        etPassword = findViewById(R.id.etPasswordReg);
+        // etRollNo is missing in XML layout currently, need to add it or remove from here.
+        // Assuming we will add it to XML.
+        etRollNo = findViewById(R.id.etRollNo); 
+        etEmail = findViewById(R.id.etEmail);
+        etMobile = findViewById(R.id.etPhone);
+        etPassword = findViewById(R.id.etPassword);
         btnRegister = findViewById(R.id.btnRegister);
-        tvLoginLink = findViewById(R.id.tvLoginLink);
+        tvLoginLink = findViewById(R.id.tvLogin);
 
         btnRegister.setOnClickListener(v -> registerUser());
         tvLoginLink.setOnClickListener(v -> finish());
