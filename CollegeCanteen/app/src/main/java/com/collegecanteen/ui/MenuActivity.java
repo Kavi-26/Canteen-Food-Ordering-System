@@ -42,6 +42,8 @@ public class MenuActivity extends AppCompatActivity {
         btnGoToCart = findViewById(R.id.btnGoToCart);
         btnGoToCart.setOnClickListener(v -> startActivity(new Intent(this, CartActivity.class)));
 
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+
         if (searchQuery != null) {
             tvCategoryTitle.setText("Results for \"" + searchQuery + "\"");
             searchFoodItems(searchQuery);

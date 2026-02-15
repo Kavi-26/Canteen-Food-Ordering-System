@@ -33,15 +33,7 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.cardSnacks).setOnClickListener(v -> openMenu("Snacks"));
         findViewById(R.id.cardDrinks).setOnClickListener(v -> openMenu("Drinks"));
         
-        findViewById(R.id.btnViewCart).setOnClickListener(v -> startActivity(new Intent(this, CartActivity.class)));
-        
-        findViewById(R.id.btnOrderHistory).setOnClickListener(v -> startActivity(new Intent(this, OrderHistoryActivity.class)));
-        
-        findViewById(R.id.btnLogout).setOnClickListener(v -> {
-            sessionManager.logout();
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-        });
+        findViewById(R.id.cardDrinks).setOnClickListener(v -> openMenu("Drinks"));
 
         androidx.appcompat.widget.SearchView searchView = findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
@@ -60,6 +52,34 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        setupBottomNavigation();
+    }
+
+    private void setupBottomNavigation() {
+        com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setSelectedItemId(R.id.nav_home);
+            bottomNavigationView.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+                if (itemId == R.id.nav_home) {
+                    return true;
+                } else if (itemId == R.id.nav_cart) {
+                    startActivity(new Intent(getApplicationContext(), CartActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                } else if (itemId == R.id.nav_history) {
+                    startActivity(new Intent(getApplicationContext(), OrderHistoryActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                } else if (itemId == R.id.nav_profile) {
+                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                    overridePendingTransition(0, 0);
+                    return true;
+                }
+                return false;
+            });
+        }
     }
 
     private void openMenu(String category) {

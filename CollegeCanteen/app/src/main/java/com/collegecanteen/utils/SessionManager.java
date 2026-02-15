@@ -41,6 +41,14 @@ public class SessionManager {
     public String getUserName() {
         return pref.getString(KEY_NAME, "User");
     }
+
+    public String getUserEmail() {
+        return pref.getString(KEY_EMAIL, "No Email");
+    }
+
+    public String getUserRole() {
+        return pref.getString(KEY_ROLE, "User");
+    }
     
     public int getUserId() {
         // Default to 1 for testing if not set, or handle property

@@ -31,6 +31,8 @@
         <activity android:name=".ui.OtpVerificationActivity" />
         <activity android:name=".ui.StaffDashboardActivity" />
         <activity android:name=".ui.OrderConfirmationActivity" />
+        <activity android:name=".ui.OrderHistoryActivity" />
+        <activity android:name=".ui.ProfileActivity" />
 
     </application>
 
