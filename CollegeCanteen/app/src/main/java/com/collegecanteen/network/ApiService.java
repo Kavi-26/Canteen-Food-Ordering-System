@@ -42,4 +42,7 @@ public interface ApiService {
 
     @GET("/api/orders/history/{userId}")
     Call<ApiResponse> getUserOrders(@retrofit2.http.Path("userId") Long userId);
+
+    @GET("/api/orders/all")
+    Call<ApiResponse> getAllOrders();
 }

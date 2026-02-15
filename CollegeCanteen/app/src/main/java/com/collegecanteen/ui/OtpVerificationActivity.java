@@ -57,8 +57,8 @@ public class OtpVerificationActivity extends AppCompatActivity {
                     Toast.makeText(OtpVerificationActivity.this, "Order Confirmed!", Toast.LENGTH_LONG).show();
                     CartManager.getInstance().clearCart();
                     
-                    // Navigate to Home or Order Confirmation (Using Home for now)
-                    Intent intent = new Intent(OtpVerificationActivity.this, HomeActivity.class);
+                    // Navigate to Order Confirmation
+                    Intent intent = new Intent(OtpVerificationActivity.this, OrderConfirmationActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();

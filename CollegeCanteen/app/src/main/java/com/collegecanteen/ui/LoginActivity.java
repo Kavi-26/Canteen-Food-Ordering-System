@@ -70,18 +70,20 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
                     Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                     
-                    // Assuming response.body().getData() returns a User object or similar map
-                    // For now, we manually set session based on email for simplicity or fetch mapping
-                    // Ideally ApiResponse data should be parsed to User object.
+                    // Parse User object from data
+                    com.google.gson.Gson gson = new com.google.gson.Gson();
+                    String json = gson.toJson(response.body().getData());
+                    User user = gson.fromJson(json, User.class);
+
+                    // Save session
+                    sessionManager.createLoginSession(user.getName(), user.getEmail(), user.getRole());
                     
-                    // Since I can't verify ApiResponse generic type structure right now without viewing it,
-                    // I'll assume we can proceed. The backend returns a User object in data.
-                    // We need to parse it. For now, let's just save the email/role if possible.
-                    
-                    // Simplification:
-                    sessionManager.createLoginSession(email, "STUDENT"); // Defaulting role for safety until we parse User
-                    
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    // Navigate based on role
+                    if ("STAFF".equalsIgnoreCase(user.getRole())) {
+                        startActivity(new Intent(LoginActivity.this, StaffDashboardActivity.class));
+                    } else {
+                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    }
                     finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();

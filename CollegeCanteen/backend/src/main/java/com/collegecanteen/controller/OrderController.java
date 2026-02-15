@@ -118,4 +118,22 @@ public class OrderController {
         
         return new ApiResponse(true, "History fetched", orderRepository.findByUser(user.get()));
     }
+
+    @GetMapping("/all")
+    public ApiResponse getAllOrders() {
+        // In a real app, check for STAFF role/permission here
+        return new ApiResponse(true, "All orders fetched", orderRepository.findAll());
+    }
+
+    @PostMapping("/update-status")
+    public ApiResponse updateOrderStatus(@RequestParam Long orderId, @RequestParam String status) {
+        Optional<Order> orderOpt = orderRepository.findById(orderId);
+        if (orderOpt.isPresent()) {
+            Order order = orderOpt.get();
+            order.setStatus(status);
+            orderRepository.save(order);
+            return new ApiResponse(true, "Order status updated", null);
+        }
+        return new ApiResponse(false, "Order not found", null);
+    }
 }
