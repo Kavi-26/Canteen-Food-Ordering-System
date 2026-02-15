@@ -34,14 +34,15 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
         holder.tvOrderStatus.setText(order.status);
         
         // Basic status coloring
+        android.content.Context context = holder.itemView.getContext();
         if ("CONFIRMED".equals(order.status) || "COMPLETED".equals(order.status)) {
-             holder.tvOrderStatus.setTextColor(holder.itemView.getContext().getResources().getColor(android.R.color.holo_green_dark));
+             holder.tvOrderStatus.setTextColor(androidx.core.content.ContextCompat.getColor(context, android.R.color.holo_green_dark));
              holder.tvOrderStatus.setBackgroundColor(0xFFE8F5E9); // Light Green
         } else if ("PENDING".equals(order.status) || "PENDING_OTP".equals(order.status)) {
-             holder.tvOrderStatus.setTextColor(holder.itemView.getContext().getResources().getColor(android.R.color.holo_orange_dark));
+             holder.tvOrderStatus.setTextColor(androidx.core.content.ContextCompat.getColor(context, android.R.color.holo_orange_dark));
              holder.tvOrderStatus.setBackgroundColor(0xFFFFF3E0); // Light Orange
         } else {
-             holder.tvOrderStatus.setTextColor(holder.itemView.getContext().getResources().getColor(android.R.color.darker_gray));
+             holder.tvOrderStatus.setTextColor(androidx.core.content.ContextCompat.getColor(context, android.R.color.darker_gray));
              holder.tvOrderStatus.setBackgroundColor(0xFFEEEEEE); // Light Grey
         }
     }

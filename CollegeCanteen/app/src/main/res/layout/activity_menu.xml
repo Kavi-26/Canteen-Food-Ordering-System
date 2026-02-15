@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@drawable/bg_app_gradient"
     android:padding="16dp">
 
     <LinearLayout
@@ -21,7 +21,7 @@
             android:layout_height="48dp"
             android:src="@drawable/ic_launcher" 
             android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="@color/black"
+            app:tint="@color/white"
             android:rotation="180"/> 
 
         <TextView
@@ -29,12 +29,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="MENU"
+            android:text="Menu"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginStart="16dp"
-            android:textAllCaps="true"/>
+            android:textColor="@color/white"
+            android:layout_marginStart="16dp"/>
 
         <ImageButton
             android:id="@+id/btnGoToCart"
@@ -42,7 +41,7 @@
             android:layout_height="48dp"
             android:src="@android:drawable/ic_menu_agenda"
             android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="@color/black"/>
+            app:tint="@color/white"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -50,6 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingBottom="16dp"/>
+        android:paddingBottom="16dp"
+        android:clipToPadding="false"/>
 
 </LinearLayout>

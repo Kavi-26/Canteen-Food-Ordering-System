@@ -24,7 +24,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private RecyclerView rvFoodItems;
     private TextView tvCategoryTitle;
-    private Button btnGoToCart;
+    private android.widget.ImageButton btnGoToCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

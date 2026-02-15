@@ -2,22 +2,22 @@
 <resources>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="blue_light">#ABDCFF</color>
+    <color name="blue_dark">#0396FF</color>
+    <color name="grey_text">#757575</color>
+    <color name="dark_text">#212121</color>
     
-    <!-- Manga Palette -->
-    <color name="colorPrimary">#000000</color>
-    <color name="colorPrimaryVariant">#000000</color>
+    <color name="colorPrimary">#0396FF</color>
+    <color name="colorPrimaryVariant">#0277BD</color>
     <color name="colorOnPrimary">#FFFFFF</color>
     
-    <color name="colorSecondary">#FFFFFF</color>
-    <color name="colorSecondaryVariant">#000000</color>
+    <color name="colorSecondary">#ABDCFF</color>
+    <color name="colorSecondaryVariant">#80D8FF</color>
     <color name="colorOnSecondary">#000000</color>
     
-    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorBackground">#F5F5F5</color> 
     <color name="colorSurface">#FFFFFF</color>
-    <color name="colorError">#000000</color> 
+    <color name="colorError">#B00020</color>
     
-    <color name="text_primary">#000000</color>
-    <color name="text_secondary">#000000</color>
-    
-    <color name="manga_border">#000000</color>
+    <color name="manga_border">#000000</color> <!-- Keeping for safety, though unused in new theme -->
 </resources>

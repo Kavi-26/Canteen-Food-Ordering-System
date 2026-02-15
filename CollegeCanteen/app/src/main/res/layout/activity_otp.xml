@@ -1,54 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="24dp"
-    android:background="@color/white">
+    android:background="@drawable/bg_app_gradient">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="VERIFICATION"
+        android:text="Verification"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        android:letterSpacing="0.1"
+        android:textColor="@color/white"
         android:layout_marginBottom="16dp"/>
 
-    <TextView
-        android:id="@+id/tvOtpInfo"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please enter the OTP sent to your mobile."
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:layout_marginBottom="32dp"/>
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/white">
 
-    <EditText
-        android:id="@+id/etOtp"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@drawable/bg_manga_edittext"
-        android:hint="Enter OTP"
-        android:inputType="number"
-        android:maxLength="6"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:layout_marginBottom="24dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="32dp">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnVerify"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@drawable/bg_manga_button"
-        android:text="VERIFY"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/tvOtpInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please enter the OTP sent to your mobile."
+                android:textSize="16sp"
+                android:textColor="@color/grey_text"
+                android:gravity="center"
+                android:layout_marginBottom="32dp"/>
+
+            <EditText
+                android:id="@+id/etOtp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_edittext_rounded"
+                android:hint="Enter OTP"
+                android:inputType="number"
+                android:maxLength="6"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/dark_text"
+                android:layout_marginBottom="24dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnVerify"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_button_rounded"
+                android:text="Verify Now"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

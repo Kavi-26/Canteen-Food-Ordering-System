@@ -1,69 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/bg_manga_card"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="@color/white"
     android:layout_marginBottom="16dp"
-    android:padding="16dp">
-
-    <ImageView
-        android:id="@+id/imgFood"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:src="@drawable/ic_lunch"
-        android:scaleType="centerCrop"
-        android:layout_marginBottom="12dp"
-        android:background="#EEEEEE"/> 
-
-    <TextView
-        android:id="@+id/tvFoodName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="FOOD NAME"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textAllCaps="true"/>
-
-    <TextView
-        android:id="@+id/tvFoodDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Description goes here..."
-        android:textSize="14sp"
-        android:textColor="@color/black"
-        android:layout_marginTop="4dp"
-        android:maxLines="2"
-        android:ellipsize="end"/>
+    android:layout_marginHorizontal="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginTop="16dp">
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imgFood"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:src="@drawable/ic_lunch"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="12dp"
+            android:background="#F5F5F5"/> 
 
         <TextView
-            android:id="@+id/tvFoodPrice"
-            android:layout_width="0dp"
+            android:id="@+id/tvFoodName"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="₹ 100"
+            android:text="Food Name"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textColor="@color/dark_text"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAdd"
+        <TextView
+            android:id="@+id/tvFoodDesc"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:background="@drawable/bg_manga_button"
-            android:text="ADD"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"/>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:text="Delicious meal description..."
+            android:textSize="14sp"
+            android:textColor="@color/grey_text"
+            android:layout_marginTop="4dp"
+            android:maxLines="2"
+            android:ellipsize="end"/>
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/tvFoodPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="₹ 100"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/blue_dark"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_button_rounded"
+                android:text="Add"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

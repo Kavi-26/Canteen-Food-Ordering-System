@@ -4,21 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@drawable/bg_app_gradient">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@android:color/transparent"
+        app:elevation="0dp"
         android:theme="@style/Theme.CollegeCanteen">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:title="COLLEGE CANTEEN"
-            app:titleTextColor="@color/black"
+            android:background="@android:color/transparent"
+            app:title="College Canteen"
+            app:titleTextColor="@color/white"
             app:titleTextAppearance="@style/TextAppearance.AppCompat.Large">
             
             <ImageView
@@ -29,13 +30,8 @@
                 android:layout_gravity="end"
                 android:padding="8dp"
                 android:contentDescription="Logout" 
-                app:tint="@color/black"/>
+                app:tint="@color/white"/>
         </androidx.appcompat.widget.Toolbar>
-        
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/black"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -56,27 +52,24 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="24dp"
-                android:background="@drawable/bg_manga_card"
                 android:layout_marginBottom="24dp">
 
                 <TextView
                     android:id="@+id/tvWelcome"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="GOOD MORNING, USER!"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:textAllCaps="true" />
+                    android:text="Good Morning, User!"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="WHAT ARE YOU EATING?"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:text="Satisfy your hunger with our delicious menu."
+                    android:textColor="#E0E0E0"
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <!-- Search Bar -->
@@ -85,22 +78,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
-                android:background="@drawable/bg_manga_edittext"
+                android:background="@drawable/bg_white_rounded"
                 app:iconifiedByDefault="false"
-                app:queryHint="SEARCH FOOD..." 
+                app:queryHint="Search for food..." 
                 android:theme="@style/ThemeOverlay.AppCompat.Light"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="CATEGORIES"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" 
-                android:background="@drawable/bg_manga_button"
-                android:backgroundTint="@color/white"
-                android:padding="4dp"/>
+                android:text="Categories"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <GridLayout
                 android:layout_width="match_parent"
@@ -112,124 +102,152 @@
                 android:useDefaultMargins="true">
 
                 <!-- Breakfast -->
-                <LinearLayout
-                    android:id="@+id/cardBreakfast"
+                <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_margin="8dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="24dp"
-                    android:background="@drawable/bg_manga_card"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/ic_breakfast"
-                        app:tint="@color/black"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/white">
+                    <LinearLayout
+                        android:id="@+id/cardBreakfast"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="BREAKFAST"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="24dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_breakfast"
+                            app:tint="@color/blue_dark"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Breakfast"
+                            android:textColor="@color/dark_text"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <!-- Lunch -->
-                <LinearLayout
-                    android:id="@+id/cardLunch"
+                <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_margin="8dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="24dp"
-                    android:background="@drawable/bg_manga_card"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/ic_lunch"
-                        app:tint="@color/black"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/white">
+                    <LinearLayout
+                        android:id="@+id/cardLunch"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="LUNCH"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="24dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_lunch"
+                            app:tint="@color/blue_dark"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Lunch"
+                            android:textColor="@color/dark_text"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <!-- Snacks -->
-                <LinearLayout
-                    android:id="@+id/cardSnacks"
+                <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_margin="8dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="24dp"
-                    android:background="@drawable/bg_manga_card"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/ic_snacks"
-                        app:tint="@color/black"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/white">
+                    <LinearLayout
+                        android:id="@+id/cardSnacks"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="SNACKS"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="24dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_snacks"
+                            app:tint="@color/blue_dark"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Snacks"
+                            android:textColor="@color/dark_text"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <!-- Drinks -->
-                <LinearLayout
-                    android:id="@+id/cardDrinks"
+                <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_columnWeight="1"
                     android:layout_margin="8dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="24dp"
-                    android:background="@drawable/bg_manga_card"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/ic_drinks"
-                        app:tint="@color/black"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="@color/white">
+                    <LinearLayout
+                        android:id="@+id/cardDrinks"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="DRINKS"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="24dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_drinks"
+                            app:tint="@color/blue_dark"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Drinks"
+                            android:textColor="@color/dark_text"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
             </GridLayout>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -237,20 +255,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="24dp"
-                android:text="MY ORDERS"
-                android:background="@drawable/bg_manga_button"
+                android:text="My Orders"
+                android:background="@drawable/bg_button_rounded"
                 android:textColor="@color/white"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textAllCaps="false"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnViewCart"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginTop="12dp"
-                android:text="VIEW CART"
-                android:background="@drawable/bg_manga_button"
-                android:textColor="@color/white"
-                android:textStyle="bold"/>
+                android:text="View Cart"
+                android:background="@drawable/bg_button_rounded"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/blue_dark"
+                android:textStyle="bold"
+                android:textAllCaps="false"/>
                 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
