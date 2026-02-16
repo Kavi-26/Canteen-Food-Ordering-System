@@ -8,6 +8,8 @@ import com.collegecanteen.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.collegecanteen.service.SmsService;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class OrderController {
     @Autowired private UserRepository userRepository;
     @Autowired private FoodItemRepository foodItemRepository;
     @Autowired private OtpCodeRepository otpCodeRepository;
+    @Autowired private SmsService smsService;
 
     @PostMapping("/place")
     public ApiResponse placeOrder(@RequestBody OrderRequest request) {
@@ -68,9 +71,17 @@ public class OrderController {
         otpCode.setIsUsed(false);
         otpCodeRepository.save(otpCode);
 
-        System.out.println("OTP Generated for Order " + order.getOrderId() + ": " + otp); // Simulating SMS
+        // Send OTP via SMS to user's mobile number
+        smsService.sendOtp(user.getMobile(), otp);
 
-        return new ApiResponse(true, "Order placed. verify OTP: " + otp, order.getOrderId());
+        // Return masked phone number in the message for the UI
+        String maskedPhone = maskPhoneNumber(user.getMobile());
+        return new ApiResponse(true, "OTP sent to " + maskedPhone, order.getOrderId());
+    }
+
+    private String maskPhoneNumber(String phone) {
+        if (phone == null || phone.length() < 4) return "****";
+        return "******" + phone.substring(phone.length() - 4);
     }
 
     @PostMapping("/verify-otp")

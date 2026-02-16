@@ -3,13 +3,14 @@ package com.collegecanteen.ui;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.collegecanteen.R;
 import com.collegecanteen.models.FoodItem;
 import com.collegecanteen.utils.CartManager;
@@ -37,10 +38,12 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
         holder.desc.setText(food.description);
         holder.price.setText("₹ " + food.price);
         
-        // Use placeholder if image url is empty or fails
+        // Load food image with Glide
         Glide.with(holder.itemView.getContext())
              .load(food.imageUrl)
+             .transform(new CenterCrop())
              .placeholder(R.drawable.ic_lunch)
+             .error(R.drawable.ic_lunch)
              .into(holder.image);
 
         holder.btnAdd.setOnClickListener(v -> {
@@ -57,7 +60,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     static class FoodViewHolder extends RecyclerView.ViewHolder {
         TextView name, desc, price;
         ImageView image;
-        Button btnAdd;
+        View btnAdd;
 
         public FoodViewHolder(@NonNull View itemView) {
             super(itemView);

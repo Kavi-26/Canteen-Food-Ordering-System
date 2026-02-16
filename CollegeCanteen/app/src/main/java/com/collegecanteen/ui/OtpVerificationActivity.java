@@ -2,8 +2,7 @@ package com.collegecanteen.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,15 +12,16 @@ import com.collegecanteen.models.OtpVerificationRequest;
 import com.collegecanteen.network.RetrofitClient;
 import com.collegecanteen.utils.CartManager;
 import com.collegecanteen.utils.SessionManager;
+import com.google.android.material.textfield.TextInputEditText;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class OtpVerificationActivity extends AppCompatActivity {
 
-    private EditText etOtp;
-    private Button btnVerify;
-    private TextView tvOtpInfo;
+    private TextInputEditText etOtp;
+    private View btnVerify;
+    private TextView tvOtpInfo, tvPhoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,13 @@ public class OtpVerificationActivity extends AppCompatActivity {
         etOtp = findViewById(R.id.etOtp);
         btnVerify = findViewById(R.id.btnVerify);
         tvOtpInfo = findViewById(R.id.tvOtpInfo);
+        tvPhoneNumber = findViewById(R.id.tvPhoneNumber);
         
         String msg = getIntent().getStringExtra("MESSAGE");
         if (msg != null) {
-            tvOtpInfo.setText(msg); // Show OTP for demo purposes
+            // Backend returns "OTP sent to ******1234"
+            tvOtpInfo.setText("We've sent a 4-digit OTP to verify your order");
+            tvPhoneNumber.setText(msg);
         }
 
         btnVerify.setOnClickListener(v -> verifyOtp());

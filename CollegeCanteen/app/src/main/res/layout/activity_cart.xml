@@ -5,47 +5,146 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_app_gradient">
 
-    <LinearLayout 
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="24dp"
-        android:paddingBottom="70dp"> <!-- Padding for Bottom Nav -->
+        android:paddingBottom="60dp">
 
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="20dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_nav_cart"
+                app:tint="@color/white"
+                android:layout_marginEnd="12dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Cart"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <!-- Item Count Badge -->
         <TextView
+            android:id="@+id/tvItemCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Cart"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_marginBottom="24dp"/>
+            android:text="0 items in cart"
+            android:textSize="13sp"
+            android:textColor="#D0FFFFFF"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:layout_marginBottom="12dp"/>
 
+        <!-- Cart Items List -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCartItems"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:paddingBottom="16dp"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="8dp"
             android:clipToPadding="false"/>
 
+        <!-- Empty Cart Message (hidden by default) -->
+        <LinearLayout
+            android:id="@+id/emptyCartView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_nav_cart"
+                app:tint="#80FFFFFF"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your cart is empty"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Browse the menu and add some items!"
+                android:textSize="14sp"
+                android:textColor="#B0FFFFFF"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <!-- Order Summary Card -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/orderSummaryCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
             app:cardBackgroundColor="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="24dp">
+                android:padding="20dp">
 
+                <!-- Subtotal Row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Subtotal"
+                        android:textSize="14sp"
+                        android:textColor="@color/grey_text"/>
+
+                    <TextView
+                        android:id="@+id/tvSubtotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₹0.00"
+                        android:textSize="14sp"
+                        android:textColor="@color/dark_text"/>
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E8E8E8"
+                    android:layout_marginBottom="8dp"/>
+
+                <!-- Total Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -61,23 +160,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="₹0.00"
-                        android:textSize="24sp"
+                        android:textSize="22sp"
                         android:textStyle="bold"
                         android:textColor="@color/blue_dark"/>
                 </LinearLayout>
 
-                <androidx.appcompat.widget.AppCompatButton
+                <!-- Place Order Button -->
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnPlaceOrder"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="56dp"
                     android:text="Place Order"
-                    android:layout_marginTop="24dp"
-                    android:background="@drawable/bg_button_rounded"
-                    android:textColor="@color/white"
+                    android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textAllCaps="false"/>
-                
+                    android:textAllCaps="false"
+                    app:cornerRadius="14dp"
+                    app:backgroundTint="@color/blue_dark"
+                    app:icon="@drawable/ic_nav_cart"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/white"/>
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

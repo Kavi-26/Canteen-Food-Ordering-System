@@ -2,7 +2,8 @@ package com.collegecanteen.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,8 +27,10 @@ import retrofit2.Response;
 public class CartActivity extends AppCompatActivity {
 
     private RecyclerView rvCartItems;
-    private TextView tvTotalPrice;
-    private Button btnPlaceOrder;
+    private TextView tvTotalPrice, tvSubtotal, tvItemCount;
+    private View btnPlaceOrder;
+    private View orderSummaryCard;
+    private LinearLayout emptyCartView;
     private CartAdapter adapter;
     private SessionManager sessionManager;
 
@@ -39,7 +42,11 @@ public class CartActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
         rvCartItems = findViewById(R.id.rvCartItems);
         tvTotalPrice = findViewById(R.id.tvTotalPrice);
+        tvSubtotal = findViewById(R.id.tvSubtotal);
+        tvItemCount = findViewById(R.id.tvItemCount);
         btnPlaceOrder = findViewById(R.id.btnPlaceOrder);
+        orderSummaryCard = findViewById(R.id.orderSummaryCard);
+        emptyCartView = findViewById(R.id.emptyCartView);
 
         rvCartItems.setLayoutManager(new LinearLayoutManager(this));
         
@@ -81,8 +88,17 @@ public class CartActivity extends AppCompatActivity {
 
     private void updateTotal() {
         double total = CartManager.getInstance().getTotalPrice();
-        tvTotalPrice.setText(String.format("Total: ₹%.2f", total));
-        btnPlaceOrder.setEnabled(total > 0);
+        int itemCount = CartManager.getInstance().getCartItems().size();
+
+        tvTotalPrice.setText(String.format("₹%.2f", total));
+        tvSubtotal.setText(String.format("₹%.2f", total));
+        tvItemCount.setText(itemCount + (itemCount == 1 ? " item in cart" : " items in cart"));
+
+        boolean hasItems = itemCount > 0;
+        rvCartItems.setVisibility(hasItems ? View.VISIBLE : View.GONE);
+        orderSummaryCard.setVisibility(hasItems ? View.VISIBLE : View.GONE);
+        emptyCartView.setVisibility(hasItems ? View.GONE : View.VISIBLE);
+        btnPlaceOrder.setEnabled(hasItems);
     }
 
     private void placeOrder() {
@@ -92,7 +108,6 @@ public class CartActivity extends AppCompatActivity {
         }
 
         long userId = sessionManager.getUserId();
-        // Assuming pickup time is 15 mins from now for simplicity, or implementation specific
         String pickupTime = java.time.LocalDateTime.now().plusMinutes(15).toString(); 
 
         List<OrderItemDto> items = new ArrayList<>();
@@ -111,7 +126,7 @@ public class CartActivity extends AppCompatActivity {
                     CartManager.getInstance().clearCart();
                     
                     Intent intent = new Intent(CartActivity.this, OtpVerificationActivity.class);
-                    // Pass order ID if available in your logic
+                    intent.putExtra("MESSAGE", response.body().message);
                     startActivity(intent);
                     finish();
                 } else {
