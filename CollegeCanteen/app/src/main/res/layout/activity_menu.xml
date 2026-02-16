@@ -19,10 +19,9 @@
             android:id="@+id/btnBack"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/ic_launcher" 
+            android:src="@android:drawable/ic_menu_revert"
             android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="@color/white"
-            android:rotation="180"/> 
+            app:tint="@color/white"/>
 
         <TextView
             android:id="@+id/tvCategoryTitle"
@@ -33,13 +32,13 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="8dp"/>
 
         <ImageButton
             android:id="@+id/btnGoToCart"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@android:drawable/ic_menu_agenda"
+            android:src="@drawable/ic_nav_cart"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:tint="@color/white"/>
     </LinearLayout>

@@ -14,6 +14,9 @@ public class SessionManager {
     public static final String KEY_NAME = "name";
     public static final String KEY_EMAIL = "email";
     public static final String KEY_ROLE = "role";
+    public static final String KEY_MOBILE = "mobile";
+    public static final String KEY_ROLL_NO = "rollNo";
+    public static final String KEY_USER_ID = "user_id";
 
     public SessionManager(Context context) {
         this._context = context;
@@ -21,17 +24,20 @@ public class SessionManager {
         editor = pref.edit();
     }
 
-    public void createLoginSession(String name, String email, String role) {
+    public void createLoginSession(String name, String email, String role, int userId, String mobile, String rollNo) {
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_NAME, name);
         editor.putString(KEY_EMAIL, email);
         editor.putString(KEY_ROLE, role);
+        editor.putInt(KEY_USER_ID, userId);
+        editor.putString(KEY_MOBILE, mobile != null ? mobile : "");
+        editor.putString(KEY_ROLL_NO, rollNo != null ? rollNo : "");
         editor.commit();
     }
-    
-    // Overloaded for when name/role might be missing (initial impl support)
-    public void createLoginSession(String email, String role) {
-        createLoginSession("User", email, role);
+
+    // Legacy overload for backward compat
+    public void createLoginSession(String name, String email, String role) {
+        createLoginSession(name, email, role, pref.getInt(KEY_USER_ID, 1), "", "");
     }
 
     public boolean isLoggedIn() {
@@ -39,24 +45,31 @@ public class SessionManager {
     }
     
     public String getUserName() {
-        return pref.getString(KEY_NAME, "User");
+        return pref.getString(KEY_NAME, "");
     }
 
     public String getUserEmail() {
-        return pref.getString(KEY_EMAIL, "No Email");
+        return pref.getString(KEY_EMAIL, "");
     }
 
     public String getUserRole() {
-        return pref.getString(KEY_ROLE, "User");
+        return pref.getString(KEY_ROLE, "");
+    }
+
+    public String getUserMobile() {
+        return pref.getString(KEY_MOBILE, "");
+    }
+
+    public String getUserRollNo() {
+        return pref.getString(KEY_ROLL_NO, "");
     }
     
     public int getUserId() {
-        // Default to 1 for testing if not set, or handle property
-        return pref.getInt("user_id", 1); 
+        return pref.getInt(KEY_USER_ID, 1); 
     }
     
     public void saveUserId(int id) {
-        editor.putInt("user_id", id);
+        editor.putInt(KEY_USER_ID, id);
         editor.commit();
     }
 

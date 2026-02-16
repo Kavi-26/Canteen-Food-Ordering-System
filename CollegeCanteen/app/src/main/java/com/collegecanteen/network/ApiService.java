@@ -45,4 +45,7 @@ public interface ApiService {
 
     @GET("/api/orders/all")
     Call<ApiResponse> getAllOrders();
+
+    @GET("/api/users/profile/{id}")
+    Call<ApiResponse> getUserProfile(@retrofit2.http.Path("id") long userId);
 }

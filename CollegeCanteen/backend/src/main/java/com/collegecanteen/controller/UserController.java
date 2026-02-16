@@ -45,4 +45,11 @@ public class UserController {
         return user.map(value -> new ApiResponse(true, "Login successful", value))
                    .orElseGet(() -> new ApiResponse(false, "Invalid credentials", null));
     }
+
+    @GetMapping("/profile/{id}")
+    public ApiResponse getUserProfile(@PathVariable Long id) {
+        Optional<User> user = userRepository.findById(id);
+        return user.map(value -> new ApiResponse(true, "Profile fetched", value))
+                   .orElseGet(() -> new ApiResponse(false, "User not found", null));
+    }
 }

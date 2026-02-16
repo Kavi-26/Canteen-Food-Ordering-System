@@ -75,8 +75,15 @@ public class LoginActivity extends AppCompatActivity {
                     String json = gson.toJson(response.body().getData());
                     User user = gson.fromJson(json, User.class);
 
-                    // Save session
-                    sessionManager.createLoginSession(user.getName(), user.getEmail(), user.getRole());
+                    // Save all user fields to session
+                    sessionManager.createLoginSession(
+                        user.getName(), 
+                        user.getEmail(), 
+                        user.getRole(),
+                        user.getUserId(),
+                        user.getMobile(),
+                        user.getRollNo()
+                    );
                     
                     // Navigate based on role
                     if ("STAFF".equalsIgnoreCase(user.getRole())) {
