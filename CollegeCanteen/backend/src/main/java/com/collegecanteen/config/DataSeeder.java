@@ -2,6 +2,8 @@ package com.collegecanteen.config;
 
 import com.collegecanteen.model.FoodItem;
 import com.collegecanteen.repository.FoodItemRepository;
+import com.collegecanteen.repository.OrderItemRepository;
+import com.collegecanteen.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -14,8 +16,17 @@ public class DataSeeder implements CommandLineRunner {
     @Autowired
     private FoodItemRepository foodItemRepository;
 
+    @Autowired
+    private OrderItemRepository orderItemRepository;
+
+    @Autowired
+    private OrderRepository orderRepository;
+
     @Override
     public void run(String... args) {
+        orderItemRepository.deleteAll(); // Clear child dependencies first
+        orderRepository.deleteAll();
+        foodItemRepository.deleteAll(); // Force re-seed to update URLs
         if (foodItemRepository.count() == 0) {
             seed("Idli (2 pcs)", "Breakfast", 30, "Steamed rice cakes served with chutney and sambar",
                 "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=400&h=300&fit=crop");
